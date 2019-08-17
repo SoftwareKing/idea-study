@@ -1,0 +1,4 @@
+rootProject.name = 'idea-study'
+include(':idea-study-01')
+
+
