@@ -32,4 +32,5 @@ public class SelectedTypeModel {
         this.value = value;
     }
 
+
 }

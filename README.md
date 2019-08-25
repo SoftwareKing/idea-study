@@ -21,7 +21,9 @@ http://www.jetbrains.org/intellij/sdk/docs/welcome.html
 3. Building plugins with Gradle
 
 
-   http://www.jetbrains.org/intellij/sdk/docs/tutorials/build_system.html
+   * http://www.jetbrains.org/intellij/sdk/docs/tutorials/build_system.html
+   
+   * http://www.jetbrains.org/intellij/sdk/docs/tutorials/build_system/prerequisites.html
 
 ## 分享内容
 

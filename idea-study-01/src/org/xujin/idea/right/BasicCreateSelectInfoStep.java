@@ -4,9 +4,12 @@ import com.intellij.ide.util.projectWizard.ModuleWizardStep;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.project.Project;
+import org.xujin.idea.right.model.NewRightContext;
 import org.xujin.idea.right.model.SelectedTypeModel;
 
 import javax.swing.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.List;
 
 /**
@@ -52,6 +55,21 @@ public class BasicCreateSelectInfoStep extends ModuleWizardStep {
         myProject = project;
         myModule = module;
         initComBox();
+
+        kind.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                SelectedTypeModel selectedTypeModel = (SelectedTypeModel) e.getItem();
+                switch (selectedTypeModel.getValue()) {
+                    case HaloConstant.COMBOX_CONTROLLER:
+                        NewRightContext.setClassType(HaloConstant.COMBOX_CONTROLLER);
+                        break;
+                    default:
+                        NewRightContext.setClassType(null);
+                }
+
+            }
+        });
     }
 
 
@@ -76,7 +94,10 @@ public class BasicCreateSelectInfoStep extends ModuleWizardStep {
 
     @Override
     public boolean validate() throws ConfigurationException {
-
+        if (className.getText().isEmpty()) {
+            throw new ConfigurationException("Class name cannot be empty", "Create Class Tips");
+        }
+        NewRightContext.setClassName(className.getText());
         return super.validate();
     }
 
