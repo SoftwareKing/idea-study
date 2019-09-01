@@ -55,6 +55,9 @@ public class BasicCreateSelectInfoStep extends ModuleWizardStep {
         myProject = project;
         myModule = module;
         initComBox();
+        dataObjectTip.setVisible(false);
+        dataObjectValue.setVisible(false);
+        dataObjectChooseButton.setVisible(false);
 
         kind.addItemListener(new ItemListener() {
             @Override
