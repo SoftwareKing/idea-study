@@ -1,4 +1,5 @@
 rootProject.name = 'idea-study'
 include(':idea-study-01')
+include(':idea-study-02')
 
 

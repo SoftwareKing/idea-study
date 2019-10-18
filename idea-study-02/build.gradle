@@ -1,0 +1,56 @@
+buildscript {
+    repositories {
+        maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' }
+    }
+
+}
+
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.4.9'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    // compile group: 'commons-io', name: 'commons-io', version: '2.5'
+    //compile group: 'com.alibaba', name: 'fastjson', version: '1.2.58'
+    compile group: 'org.freemarker', name: 'freemarker', version: '2.3.28'
+    //compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.24'
+
+}
+
+apply plugin: 'java'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+sourceSets {
+    main {
+        java.srcDirs 'src'
+        resources.srcDirs 'resources'
+    }
+    test {
+        java.srcDirs 'test'
+        resources.srcDirs 'test-resources'
+    }
+}
+
+intellij {
+    version ideaVersion  //调试插件IDEA的版本
+    pluginName 'HaloTools'
+    updateSinceUntilBuild false
+    sandboxDirectory = "${rootProject.projectDir}/idea-sandbox/idea-${ideaVersion}"
+    plugins 'maven'
+}
+
+group 'org.xujin.idea'
+version pluginVersion
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idea-plugin url="https://github.com/SoftwareKing/idea-study">
+    <id>org.xujin.idea.plugin</id>
+    <name>HaloTools</name>
+    <version>1.0</version>
+    <vendor email="Software_King@qq.com" url="http://xujin.org">xujin.org</vendor>
+
+    <description>
+        &lt;p&gt;Enhances your productivity when developing applications based on Halo Framework.&lt;/p&gt;
+    </description>
+
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+    <depends>org.jetbrains.idea.maven</depends>
+
+    <idea-version since-build="191.4212.41"/>
+
+    <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+    <codeInsight.lineMarkerProvider language="JAVA"
+                                    implementationClass="org.xujin.idea.right.linemarker.HaloLineMarker"/>
+    </extensions>
+    <actions>
+        <group id="Halo Tools" text="Halo Tool"
+               popup="true" icon="/icons/halo.png">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="ReplaceInPath"/>
+        </group>
+
+        <!-- 创建Halo Basic -->
+        <action class="org.xujin.idea.right.NewBasicExeAction"
+                id="halo.basic.class" description="Halo Basic"
+                icon="/icons/right/HaloBasic.png"
+                text="Basic Class">
+            <add-to-group group-id="Halo Tools"/>
+        </action>
+
+    </actions>
+</idea-plugin>
